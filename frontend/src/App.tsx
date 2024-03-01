@@ -5,6 +5,7 @@ import Post from './features/post/Post';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import Register from './features/users/Register';
 import Login from './features/users/Login';
+import NewPost from './features/post/NewPost';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Container maxWidth="xl">
           <Routes>
             <Route path="/" element={<Post />} />
+            <Route path="/new-posts" element={<NewPost />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<ErrorPage/>} />

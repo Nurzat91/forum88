@@ -13,7 +13,7 @@ const UserMenu: React.FC<Props> = ({user}) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/add-new-post');
+    navigate('/new-posts');
   };
 
   const handleLogout = () => {

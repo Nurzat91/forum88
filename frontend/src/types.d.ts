@@ -41,3 +41,9 @@ export interface PostGet {
   date: string;
   image: string | null;
 }
+
+export interface PostMutation {
+  title: string;
+  description: string;
+  image: File | null;
+}

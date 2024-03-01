@@ -1,7 +1,7 @@
 import { Container, CssBaseline } from '@mui/material';
 import { Route, Routes } from 'react-router-dom';
 import AppToolbar from './components/UI/AppToolbar/AppToolbar';
-import Forum from './features/forum/Forum';
+import Post from './features/post/Post';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import Register from './features/users/Register';
 import Login from './features/users/Login';
@@ -18,7 +18,7 @@ function App() {
       <main>
         <Container maxWidth="xl">
           <Routes>
-            <Route path="/" element={<Forum />} />
+            <Route path="/" element={<Post />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<ErrorPage/>} />

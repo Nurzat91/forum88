@@ -6,8 +6,8 @@ const config = {
   rootPath,
   publicPath: path.join(rootPath, 'public'),
   mongoose: {
-    // db: 'mongodb://localhost/forum',
-    db: "mongodb://127.0.0.1:27017/forum",
+    // db: 'mongodb://localhost/post',
+    db: "mongodb://127.0.0.1:27017/post",
   }
 };
 

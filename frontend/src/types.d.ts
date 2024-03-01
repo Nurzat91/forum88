@@ -34,3 +34,10 @@ export interface RegisterResponse {
 export interface GlobalError {
   error: string;
 }
+
+export interface PostGet {
+  _id: string;
+  title: string;
+  date: string;
+  image: string | null;
+}

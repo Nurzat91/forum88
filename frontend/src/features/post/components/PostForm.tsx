@@ -1,12 +1,13 @@
-import { CircularProgress, Grid, TextField } from '@mui/material';
+import { Grid, TextField } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import { Navigate } from 'react-router-dom';
+import {LoadingButton} from '@mui/lab';
 import FileInput from '../../../components/UI/FileInput/FileInput';
 import { PostMutation } from '../../../types';
 import { useAppSelector } from '../../../app/hooks';
 import { selectUser } from '../../users/usersSlice';
-import { Navigate } from 'react-router-dom';
 import { selectCreateLoading } from '../postSlice';
-import {LoadingButton} from '@mui/lab';
+
 
 interface Props {
   onSubmit: (mutation: PostMutation) => void;

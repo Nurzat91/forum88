@@ -1,34 +1,38 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, CardMedia, Grid, styled } from '@mui/material';
+import { Card, CardActions, CardHeader, CardMedia, Grid, styled, Typography } from '@mui/material';
+import {Link} from "react-router-dom";
+import dayjs from "dayjs";
 import imageNotAvailable from '../../../assets/images/imageNotAvailable.png';
 import { apiURL } from '../../../constants';
 
 interface Props {
   id: string;
+  username: string;
   title: string;
   date: string;
   image: string | null;
 }
 const ImageCardMedia = styled(CardMedia)({
-  height: 0,
-  paddingTop: '56.25%',
+  width: '120px',
+  paddingLeft: '15%',
 });
-const PostItem: React.FC<Props>  = ({id, title, date, image}) => {
+const PostItem: React.FC<Props>  = ({id, username,  title, date, image}) => {
+  const dateTime = dayjs(date).format('DD.MM.YYYY HH:mm');
   let cardImage = imageNotAvailable;
 
   if (image) {
     cardImage = apiURL + '/' + image;
   }
   return (
-    <Grid item sm md={6} lg={4}>
-      <Card sx={{height: '100%'}} id={id}>
-        <CardHeader title={title}/>
+    <Grid item sm md={6} lg={4} id={id}>
+      <Card sx={{display: "flex", margin: 1}}>
         <ImageCardMedia image={cardImage} title={title}/>
-        <CardContent>
-          <p>
-            {date}
-          </p>
-        </CardContent>
+        <Grid>
+          <CardHeader title={dateTime + ' by ' + username}/>
+          <CardActions sx={{display: "flex", flexDirection: "column", alignItems: "flex-start"}}>
+            <Typography variant="h5" component={Link} to={'/post/' + id} sx={{pl: 1}}>{title}</Typography>
+          </CardActions>
+        </Grid>
       </Card>
     </Grid>
   );

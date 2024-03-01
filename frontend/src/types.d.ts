@@ -37,13 +37,36 @@ export interface GlobalError {
 
 export interface PostGet {
   _id: string;
+  user: {
+    _id: string,
+    username: string,
+  };
   title: string;
   date: string;
   image: string | null;
 }
+export type ApiPostGet = Omit<PostGet, 'id', 'date'>;
 
 export interface PostMutation {
   title: string;
   description: string;
   image: File | null;
+}
+
+export interface CommentsGet {
+  _id: string;
+  postId: string;
+  comment: string;
+}
+
+export type CommentsWithoutId = Omit<CommentsGet, '_id'>;
+
+export interface CommentsUser {
+  _id: string;
+  userId: {
+    _id: string;
+    username: string;
+  }
+  postId: string;
+  comment: string;
 }

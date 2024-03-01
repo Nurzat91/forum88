@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
-import { useAppDispatch } from '../../app/hooks';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../app/hooks';
 import { PostMutation } from '../../types';
 import { createPost } from './postThunks';
 import PostForm from './components/PostForm';

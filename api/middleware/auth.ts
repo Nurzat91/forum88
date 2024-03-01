@@ -13,7 +13,7 @@ const auth = async (req: RequestWithUser, res: Response, next: NextFunction) => 
   const token = request.get('Authorization');
 
   if (!token) {
-    return res.status(401).send({error: 'No token'});
+    return res.status(401).send({error: 'No token or Authorization header present'});
   }
 
   const user = await User.findOne({token});

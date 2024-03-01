@@ -1,13 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axiosApi from '../../axiosApi';
-import { PostGet, PostMutation } from '../../types';
+import { ApiPostGet, PostGet, PostMutation } from '../../types';
 import { RootState } from '../../app/store';
 
 export const fetchPosts = createAsyncThunk<PostGet[]>(
   'posts/fetchPosts',
   async () => {
     const postsResponse = await axiosApi.get<PostGet[]>('/posts');
-    return postsResponse.data;
+    return postsResponse.data.reverse();
   }
 );
 
@@ -15,7 +15,6 @@ export const createPost = createAsyncThunk<void, PostMutation, {state: RootState
   'posts/create',
   async (data, {getState}) => {
     const user = getState().users.user;
-    console.log(user);
 
     if(user){
 
@@ -34,5 +33,18 @@ export const createPost = createAsyncThunk<void, PostMutation, {state: RootState
     }else {
       throw new Error('No user');
     }
+  }
+);
+
+export const fetchOnePosts = createAsyncThunk<ApiPostGet, string>(
+  'posts/fetchOne',
+  async (postId) => {
+    const postsResponse = await axiosApi.get<ApiPostGet | null>('/posts/' + postId);
+
+    if (postsResponse.data === null) {
+      throw new Error('Not found');
+    }
+
+    return postsResponse.data;
   }
 );

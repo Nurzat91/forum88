@@ -14,11 +14,6 @@ const Post = () => {
     dispatch(fetchPosts());
   }, [dispatch]);
 
-  let postData;
-  if(postData) {
-
-  }
-
   return(
     <Grid container direction="column" spacing={2}>
       <Grid item container spacing={2}>
@@ -29,6 +24,7 @@ const Post = () => {
             <PostItem
               key={post._id}
               id={post._id}
+              username={post.user.username}
               title={post.title}
               date={post.date}
               image={post.image}
